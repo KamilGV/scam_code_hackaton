@@ -6,14 +6,15 @@ from db_settings import Base
 import sqlalchemy as sa
 
 
-class User(Base):
-    __tablename__ = "users"
+class Question(Base):
+    __tablename__ = "questions"
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True, comment="Идентификатор задачи")
-    email = sa.Column(sa.String, comment="Email адрес", unique=True)
-    name = sa.Column(sa.String, comment="Имя пользователя")
-    hashed_password = sa.Column(sa.String, comment="Зашифрованный пароль")
-    is_teacher = sa.Column(sa.Boolean, comment="Флаг админа")
+    text = sa.Column(sa.String, comment="Текст теории")
+    question = sa.Column(sa.String, comment="Текст вопроса")
+    type_question = sa.Column(sa.Integer, comment="Тип вопроса")
+    answer = sa.Column(sa.JSON, comment="Ответы к вопросу")
+    test_id = sa.Column(sa.Integer, comment="ID теста")
     created_at = sa.Column(sa.DateTime, comment="Время создания записи", default=datetime.datetime.utcnow)
 
     jobs = relationship("Job", back_populates="user")

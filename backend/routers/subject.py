@@ -1,9 +1,9 @@
-
+from
 
 router = APIRouter(prefix="/subject", tags=["subject"])
 
 
-@router.get("", response_model=SubjectSchema)
+@router.get("", response_model=list[SubjectSchema])
 async def read_test(
         test_id: int,
         db: AsyncSession = Depends(get_db)):

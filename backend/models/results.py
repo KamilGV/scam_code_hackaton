@@ -6,14 +6,12 @@ from db_settings import Base
 import sqlalchemy as sa
 
 
-class User(Base):
-    __tablename__ = "users"
+class Result(Base):
+    __tablename__ = "results"
 
     id = sa.Column(sa.Integer, primary_key=True, autoincrement=True, comment="Идентификатор задачи")
-    email = sa.Column(sa.String, comment="Email адрес", unique=True)
-    name = sa.Column(sa.String, comment="Имя пользователя")
-    hashed_password = sa.Column(sa.String, comment="Зашифрованный пароль")
-    is_teacher = sa.Column(sa.Boolean, comment="Флаг админа")
+    user_id = sa.Column(sa.Integer, comment="ID пользователя",)
+    test_id = sa.Column(sa.Integer, comment="ID теста",)
     created_at = sa.Column(sa.DateTime, comment="Время создания записи", default=datetime.datetime.utcnow)
 
     jobs = relationship("Job", back_populates="user")

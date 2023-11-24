@@ -17,7 +17,7 @@ async def read_test(
     return await test_queries.get_test(db=db, test_id=test_id)
 
 @router.post("")
-async def create_job(
+async def create_test(
         test: TestInSchema,
         db: AsyncSession = Depends(get_db),
         current_user: User = Depends(get_current_user)):
