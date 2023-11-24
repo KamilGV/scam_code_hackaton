@@ -1,12 +1,12 @@
 from fastapi import FastAPI
-from routers import auth_router, user_router, job_router, response_router
+from routers import auth, user, subject, test
 import uvicorn
 
 app = FastAPI()
-app.include_router(auth_router)
-app.include_router(user_router)
-app.include_router(response_router)
-app.include_router(job_router)
+app.include_router(auth)
+app.include_router(user)
+app.include_router(subject)
+app.include_router(test)
 
 
 if __name__ == '__main__':

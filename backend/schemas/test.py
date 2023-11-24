@@ -1,4 +1,4 @@
-from typing import Literal, Dict
+from typing import Literal, Dict, Union
 from pydantic import BaseModel, EmailStr, constr, field_validator
 
 types_question = Literal['choice', 'insertion', 'drag_and_drop']
@@ -9,8 +9,8 @@ class TestSchema(BaseModel):
     text: str
     type_question: types_question
     question: str
-    answers = list[str] | dict[str, str] | None
-    correct_answer = str | dict[str, str]
+    answers = Union[list[str], dict[str, str], None]
+    correct_answer = Union[str, dict[str, str]]
 
     @field_validator("correct_answer")
     @classmethod
